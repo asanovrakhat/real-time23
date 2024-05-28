@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Контакты</title>
+    <link rel="shortcut icon" href="/icons/icon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            color: #fff;
+        }
+        .reel{
+          margin-left: -80%;
+          position:absolute; 
+          font-size: 40px;
+          display: flex;
+          
+        }
+  
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+        }
+  
+        .navbar-left,
+        .navbar-right {
+            display: flex;
+        }
+  
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+  
+        .navbar a:hover {
+            background-color: #555;
+        }
+  
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+           
+        }
+  
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px;
+            
+        }
+  
+        .search-container {
+            margin-top: 50px;
+        }
+  
+        .alwaysVisibleContent {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .h2{
+          display: none;
+        }
+  
+        .video {
+            margin-top: 20px;
+        }
+  
+        @media (max-width: 768px) {
+          .reel{
+            position: relative;
+            margin-right: -30%;
+            margin-bottom: -30px;
+          }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+  
+            .navbar-left,
+            .navbar-right {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+  
+            .navbar a {
+                margin: 5px 0;
+            }
+  
+            .menu-icon  {
+                display: flex;
+            }
+  
+            .search-container {
+                width: 70%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 10%;
+               
+                position: relative;
+            }
+  
+            .search-container input {
+                width: 80%;
+            }
+        }
+  
+        @media (max-width: 480px) {
+          .reel{ 
+            position: sticky;
+            width: 10%;
+     
+            
+           }
+            .navbar {
+                padding: 10px;
+            }
+  
+            .navbar-left,
+            .navbar-right {
+                align-items: center;
+            }
+            .search-container {
+              width: 10%;
+             
+            }
+            
+              
+            }
+           
+  
+            .search-container input {
+                width: 50%;
+                
+            }
+            
+    </style>
+</head>
+
+<body>
+    <div class="reel">
+        <h2>Reel Time</h2>
+      </div>
+    <div class="navbar">
+      
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="navbar-left">
+            <a href="./privacy-policy.html" target="_blank">Политика конфиденциальности</a>
+            <a href="./terms-and-conditions.html" target="_blank">Условия использования</a>
+        </div>
+        <div class="navbar-right">
+            <a href="./contact.html" target="_blank">Контакт</a>
+            <a id="login-link" href="./login.html" target="_blank">Войти</a>
+        </div>
+    </div>
+
+    <div class="information">
+      
+        
+        <h2>Свяжитесь с нами</h2>
+
+        <p>В NETFLIX мы ценим ваш отзыв и всегда готовы помочь. Если у вас есть вопросы, замечания или предложения, не стесняйтесь обращаться к нам.</p>
+
+        <p>Вы можете связаться с нами следующими способами:</p>
+
+        <h2>Электронная почта:</h2>
+
+        <p>Если вы предпочитаете общаться по электронной почте, вы можете связаться с нами по адресу ermacareer@gmail.com. Мы сделаем все возможное, чтобы ответить на ваш запрос как можно скорее.</p>
+
+    </div>
+</body>
+
+</html>
