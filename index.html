@@ -1,1 +1,314 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <link rel="shortcut icon" href="icons/icon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4285f4" />
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="https://netflix-1uh.pages.dev/og.jpg" />
+    <meta name="description" content="Откройте и смотрите свои любимые фильмы и телепередачи с NETFLIX KE PITAJI - веб-сайтом по поиску и просмотру контента с открытым исходным кодом. Наслаждайтесь неограниченным доступом к огромной библиотеке контента бесплатно.">
+    <title>NETFLIX</title>
+    <link rel="preload stylesheet" href="style.min.css" as="style">
+    <link rel="preload stylesheet" href="center-atom.min.css" as="style">
+    <!-- Google tag (gtag.js) -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-THTQ9GZQ0J">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-THTQ9GZQ0J');
+    </script>
+    <!-- Код сервисного работника для PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                    console.log('Сервисный работник зарегистрирован: ', registration.scope);
+                }).catch(function (error) {
+                    console.log('Регистрация сервисного работника не удалась: ', error);
+                });
+            });
+        }
+    </script>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64c60eb01734a80012bd61d3&product=video-share-buttons&source=platform" async="async"></script>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #222;
+          color: #fff;
+      }
+      .reel{
+        margin-left: -80%;
+        position:absolute; 
+        font-size: 40px;
+        display: flex;
+        
+      }
+
+      .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+          background-color: #333;
+      }
+
+      .navbar-left,
+      .navbar-right {
+          display: flex;
+      }
+
+      .navbar a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 20px;
+          padding: 5px 10px;
+          border-radius: 5px;
+      }
+
+      .navbar a:hover {
+          background-color: #555;
+      }
+
+      .menu-icon {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+         
+      }
+
+      .menu-icon div {
+          width: 25px;
+          height: 3px;
+          background-color: #fff;
+          margin: 4px;
+          
+      }
+
+      .search-container {
+          margin-top: 50px;
+      }
+
+      .alwaysVisibleContent {
+          text-align: center;
+          margin-top: 20px;
+      }
+      .h2{
+        display: none;
+      }
+
+      .video {
+          margin-top: 20px;
+      }
+      @media(max-width:1215px){
+        .reel{
+            margin-top: 3%;
+            position:absolute;
+           
+        }
+      }
+      @media(max-width:793px){
+        .reel{
+            margin-top: 5%;
+            position: absolute;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .reel{
+         display: none;
+        }
+          .navbar {
+              flex-direction: column;
+              align-items: flex-start;
+          }
+
+          .navbar-left,
+          .navbar-right {
+              flex-direction: column;
+              width: 100%;
+              display: none;
+          }
+
+          .navbar a {
+              margin: 5px 0;
+          }
+
+          .menu-icon  {
+              display: flex;
+          }
+
+          .search-container {
+              width: 70%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-bottom: 10%;
+             
+              position: relative;
+          }
+
+          .search-container input {
+              width: 80%;
+          }
+      }
+
+      @media (max-width: 480px) {
+        .reel{ 
+          display: none;
+   
+          
+         }
+          .navbar {
+              padding: 10px;
+          }
+
+          .navbar-left,
+          .navbar-right {
+              align-items: center;
+          }
+          .search-container {
+            width: 10%;
+           
+          }
+          
+            
+          }
+         
+
+          .search-container input {
+              width: 50%;
+              
+          }
+          
+  </style>
+</head>
+
+<body>
+  <div class="reel">
+    <h2>Reel Time</h2>
+  </div>
+ 
+    <div class="navbar">
+      
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="navbar-left">
+            <a href="./privacy-policy.html" target="_blank">Политика конфиденциальности</a>
+            <a href="./terms-and-conditions.html" target="_blank">Условия использования</a>
+        </div>
+        <div class="navbar-right">
+            <a href="./contact.html" target="_blank">Контакт</a>
+            <a id="login-link" href="./login.html" target="_blank">Войти</a>
+        </div>
+    </div>
+    <div class="search-container" style="width: 70%;">
+        <input type="search" id="search-input" placeholder="Поиск любого фильма/веб-сериала/аниме">
+        <button id="search-button">Поиск</button>
+    </div>
+    <center>
+        <div id="video" class="video">
+            <iframe id="iframe" scrolling="no" src="" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p style="color: rgb(79, 221, 221); font-weight: 500;">В случае ошибки или слишком медленной загрузки повторите щелчок на плакате вашего фильма ниже или просто измените плеер из правого угла в видеоплеере.</p>
+            <!-- ShareThis BEGIN -->
+            <div class="sharethis-inline-share-buttons"></div>
+            <!-- ShareThis END -->
+            <div id="webSeriesData"></div>
+        </div>
+    </center>
+    <div id="results"></div>
+    <center style="margin-top: 2vh;">
+        <div class="alwaysVisibleContent">
+            
+            <h2 style="color: rgb(55, 255, 255);">Просмотр фильмов Reel time</h2>
+            <h3>Поиск любого фильма/веб-сериала/аниме</h3>
+            
+        </div>
+    </center>
+    <script>
+      // Function to update the login link based on the login status
+      function updateLoginLink() {
+          const username = localStorage.getItem('username');
+          const loginLink = document.getElementById('login-link');
+
+          if (username) {
+              loginLink.textContent = `Привет, ${username}`;
+              loginLink.href = ''; // Clear the href attribute
+          } else {
+              loginLink.textContent = 'Войти';
+              loginLink.href = './login.html'; // Set the href attribute to login.html
+          }
+      }
+
+      // Update the login link when the page is loaded
+      window.onload = updateLoginLink;
+
+      // Clear the username from localStorage on project restart
+      window.addEventListener('beforeunload', function () {
+          localStorage.removeItem('username');
+      });
+
+      // Add event listener to the registration form submit event
+      document.getElementById('registrationForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirm_password').value;
+
+          if (password !== confirmPassword) {
+              alert('Пароли не совпадают.');
+              return;
+          }
+
+          // Retrieve existing users from localStorage
+          let users = JSON.parse(localStorage.getItem('users')) || [];
+
+          // Check if username already exists
+          if (users.some(user => user.username === username)) {
+              alert('Имя пользователя уже существует.');
+              return;
+          }
+
+          // Add the new user to the list
+          users.push({ username, email, password });
+          localStorage.setItem('users', JSON.stringify(users));
+
+          // Store the username in localStorage
+          localStorage.setItem('username', username);
+
+          // Redirect to index.html
+          window.location.href = 'index.html';
+      });
+
+      // Function to toggle the menu display
+      function toggleMenu() {
+          const navbarLeft = document.querySelector('.navbar-left');
+          const navbarRight = document.querySelector('.navbar-right');
+          navbarLeft.style.display = navbarLeft.style.display === 'flex' ? 'none' : 'flex';
+          navbarRight.style.display = navbarRight.style.display === 'flex' ? 'none' : 'flex';
+      }
+
+      // Initially open the menu on media devices
+      if (window.matchMedia('(max-width: 768px)').matches) {
+          const navbarLeft = document.querySelector('.navbar-left');
+          const navbarRight = document.querySelector('.navbar-right');
+          navbarLeft.style.display = 'flex';
+          navbarRight.style.display = 'flex';
+      }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <script src="script.min.js"></script>
+</body>
+
+</html>
